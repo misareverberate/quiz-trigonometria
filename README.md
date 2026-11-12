@@ -1,12 +1,16 @@
 # Quiz de Trigonometria
 
-Um quiz de trigonometria para o terminal do Windows, com o Sans do Undertale
-fazendo parte da experiência.
+Quiz de trigonometria para o terminal do Windows, com o Sans do Undertale
+como personagem. Foi o trabalho de conclusão da disciplina Fundamentos de
+Programação, desenvolvido em cerca de um mês.
 
-Foi feito em cerca de um mês, como trabalho da disciplina de Fundamentos de
-Programação, em C. Todo o código está em um único arquivo (`quiz-trigonometria.c`),
-e o projeto ficou limitado pelas bibliotecas disponíveis no Dev-C++, por isso
-só roda no Windows.
+## Requisitos do trabalho
+
+O professor definiu duas restrições, e o projeto segue as duas:
+
+- **Arquivo único em C.** Todo o código está em `src/quiz-trigonometria.c`.
+- **Bibliotecas da disciplina.** O jogo usa `conio.h`, `windows.h` e `winmm`
+  para tela, teclado e áudio. Por isso ele roda apenas no Windows.
 
 ## Funcionalidades
 
@@ -19,34 +23,38 @@ só roda no Windows.
 
 ## Como jogar
 
-1. Baixe o repositório e rode `quiz-trigonometria.exe` no Windows.
-2. Os arquivos `.mp3` e `console.ico` precisam ficar na mesma pasta do
-   executável.
+1. Abra a pasta `jogo/` e rode `quiz-trigonometria.exe` no Windows.
+2. Mantenha os arquivos `.mp3` e `console.ico` na mesma pasta do executável.
+   O jogo carrega as músicas pelo nome, então sem eles ele roda sem som.
 3. No menu, use **W** e **S** para mover a seta e **Enter** para escolher.
 4. Responda as perguntas dentro do tempo.
 
-## Arquivos
+## Estrutura
 
-| Arquivo | Descrição |
-|---|---|
-| `quiz-trigonometria.c` | Código-fonte da versão final |
-| `quiz-trigonometria.exe` | Executável da versão final (Windows, 64 bits) |
-| `Makefile.win` | Makefile gerado pelo Dev-C++ |
-| `console.ico` | Ícone da janela do console |
-| `*.mp3` | Músicas e efeitos de som do jogo |
+```
+.
+├── src/
+│   ├── quiz-trigonometria.c   # código-fonte
+│   └── Makefile.win           # build do Dev-C++ (MinGW)
+└── jogo/
+    ├── quiz-trigonometria.exe # executável pronto para rodar
+    ├── console.ico            # ícone da janela
+    └── *.mp3                  # músicas e efeitos de som
+```
 
 ## Como compilar
 
-Com o Dev-C++ (MinGW), abra o projeto ou use o `Makefile.win`. O código
-precisa linkar com `winmm` (`-lwinmm`).
+Com o Dev-C++ (MinGW), abra o projeto a partir de `src/` ou use o
+`Makefile.win`. O código precisa linkar com `winmm` (`-lwinmm`). O
+executável gerado vai para `jogo/`.
 
 O `Makefile.win` tem os caminhos da instalação do Dev-C++ do computador
 original (`C:/Program Files (x86)/Dev-Cpp/...`). Ajuste esses caminhos se
 usar outra instalação.
 
-## Limitações
+## Limitações conhecidas
 
-- Só roda no Windows, porque usa `conio.h`, `windows.h` e a biblioteca
-  `winmm` para o áudio.
-- Não há menu para sair pelo jogo nem para jogar de novo sem reiniciar.
-- Todo o código está em um único arquivo, sem separação em módulos.
+- Só roda no Windows, pelas bibliotecas exigidas.
+- O jogo não tem opção de sair pelo menu nem de jogar de novo sem reiniciar.
+- Todo o código fica em um único arquivo, sem separação em módulos, como
+  pedido pelo trabalho.
